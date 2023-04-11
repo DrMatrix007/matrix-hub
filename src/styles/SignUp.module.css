@@ -1,0 +1,117 @@
+.all {
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+
+.animated_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #252525;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 500px;
+    transform: scale(0.5) rotate(-45deg) skewX(-15deg);
+    opacity: 0;
+    animation: cardAnim 0.5s ease-out forwards;
+}
+
+@keyframes cardAnim {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg) skewX(0deg);
+        opacity: 1;
+    }
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+@keyframes inputAction {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.container input {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    font-size: 1rem;
+    transition: box-shadow 0.3s ease-in-out;
+    background-color: #1f1f1f;
+    color: #fff;
+}
+
+.container input:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
+    animation-name: inputAction;
+    animation-duration: 0.5s;
+
+}
+
+.the_button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    background-color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+    border-radius: 50px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    margin:10 px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.the_button:hover {
+    background-color: #4c4c4c;
+    border-color: #4c4c4c;
+}
+
+.error{
+    color:red;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
