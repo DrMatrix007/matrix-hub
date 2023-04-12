@@ -1,13 +1,15 @@
 import { models } from "@/models/models";
 import { compare } from "bcrypt";
+import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
     pages: {
         newUser: "/auth/signup",
         signIn: "/auth/signin",
     },
+
     providers: [
         Credentials({
             credentials: {

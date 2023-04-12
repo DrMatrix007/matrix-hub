@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar";
 import { userInput as useInput } from "@/hooks/use_input";
-import styles from "@/styles/SignUp.module.css";
-import axios from "axios";
+import styles from "@/styles/Form.module.css";
+import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 
 const SignUp = ({ providers }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -29,34 +29,40 @@ const SignUp = ({ providers }: InferGetServerSidePropsType<typeof getServerSideP
                 }
             }
         } catch (e) {
-            console.log(e);
+            if (e instanceof AxiosError) {
+                const err = e.response?.data?.message;
+                setError(err || "Uknown error had occured");
+            }
         }
     }
 
 
     return <>
-        <Navbar />
-        <div className={styles.container + " all"}>
-            <div className={styles.animated_card}>
-                <h3 className={styles.title}>Enter Email and Password: </h3>
-                <input value={username} onChange={setUsername} placeholder="Username" />
-                <input value={password} onChange={setPassword} placeholder="Password" type="password" />
-                <button className={styles.the_button} onClick={() => signInWithCreds()}>
-                    Sign Up
-                </button>
-                {
-                    error !== "" ?
-                        <p className={styles.error}>{error}</p>
-                        :
-                        null
-                }
-                {Object.values(providers).filter(a => a.name !== "Credentials").map((provider) => (
-                    <div key={provider.name}>
-                        <button onClick={() => signIn(provider.id)}>
-                            Sign in with {provider.name}
-                        </button>
-                    </div>
-                ))}
+        <div className={" all"}>
+            <Navbar />
+            <div className={styles.container}>
+
+                <div className={styles.animated_card}>
+                    <h3 className="title">Enter Email and Password: </h3>
+                    <input value={username} onChange={setUsername} placeholder="Username" />
+                    <input value={password} onChange={setPassword} placeholder="Password" type="password" />
+                    <button className={styles.the_button} onClick={() => signInWithCreds()}>
+                        Sign In
+                    </button>
+                    {
+                        error !== "" ?
+                            <p className={styles.error}>{error}</p>
+                            :
+                            null
+                    }
+                    {Object.values(providers).filter(a => a.name !== "Credentials").map((provider) => (
+                        <div key={provider.name}>
+                            <button onClick={() => signIn(provider.id)}>
+                                Sign in with {provider.name}
+                            </button>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     </>;

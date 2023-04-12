@@ -1,7 +1,8 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose, { Schema, mongo } from "mongoose";
 import { isEmail, isUsername } from "./validator";
 import bcrypt from "bcrypt";
 import { mongoosePromise } from "@/mongodb/mongoose";
+import { ObjectId } from "mongodb";
 
 const userSchema = new mongoose.Schema(
 	{
@@ -19,6 +20,9 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		subMatrices: {
+			type: [Schema.Types.ObjectId]
+		}
 	},
 	{
 		methods: {

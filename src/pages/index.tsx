@@ -14,22 +14,26 @@ const Home = () => {
             <p className={styles.subtitle}>A community-driven platform for discussing all things Matrix</p>
           </header>
           <div className={styles.content}>
-            <div className={styles.card}>
+            <div className="card">
               <h2 className={styles.cardTitle}>Join the Discussion</h2>
               <p className={styles.cardDescription}>Create an account to start posting and commenting on Matrix topics</p>
-              <Link href={"/auth/signup"} >
+              <Link href="/auth/signup">
                 <button className={styles.cardButton} >Sign Up</button>
               </Link>
             </div>
-            <div className={styles.card}>
+            <div className="card">
               <h2 className={styles.cardTitle}>Explore Topics</h2>
               <p className={styles.cardDescription}>Browse popular topics or search for specific keywords</p>
-              <button className={styles.cardButton}>Explore</button>
+              <Link href="/">
+                <button className={styles.cardButton}>Explore</button>
+              </Link>
             </div>
-            <div className={styles.card}>
-              <h2 className={styles.cardTitle}>Moderate Content</h2>
-              <p className={styles.cardDescription}>Help keep the community respectful and engaging by becoming a moderator</p>
-              <button className={styles.cardButton}>Apply</button>
+            <div className="card">
+              <h2 className={styles.cardTitle}>Create Content</h2>
+              <p className={styles.cardDescription}>Make new communities with special ideas</p>
+              <Link href="/sub/create">
+                <button className={styles.cardButton}>Create</button>
+              </Link>
             </div>
           </div>
         </div>
